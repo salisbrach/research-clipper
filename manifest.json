@@ -17,8 +17,8 @@
     "commands": {
         "copy-command": {
             "suggested_key": {
-                "default": "Ctrl+Shift+C",
-                "mac": "Command+Shift+C"
+                "default": "Alt+Shift+C",
+                "mac": "Option+Shift+C"
             },
             "description": "Copy selected text with URL and date"
         }
