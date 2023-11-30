@@ -3,10 +3,10 @@
     "name": "Research Clipper",
     "version": "1.0",
     "description": "Easily clip and copy text with URL and date from web pages.",
-    "permissions": ["activeTab", "clipboardWrite", "storage", "commands"],
+    "permissions": ["activeTab", "clipboardWrite", "storage"],
+    "action": {},
     "background": {
-        "scripts": ["background.js"],
-        "persistent": false
+        "service_worker": "background.js"
     },
     "content_scripts": [
         {
@@ -22,5 +22,8 @@
             },
             "description": "Copy selected text with URL and date"
         }
-    }
+    },
+    "host_permissions": [
+        "<all_urls>"
+    ]
 }
