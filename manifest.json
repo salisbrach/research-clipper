@@ -1,1 +1,26 @@
-
+{
+    "manifest_version": 2,
+    "name": "Research Clipper",
+    "version": "1.0",
+    "description": "Easily clip and copy text with URL and date from web pages.",
+    "permissions": ["activeTab", "clipboardWrite", "storage", "commands"],
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content.js"]
+        }
+    ],
+    "commands": {
+        "copy-command": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+C",
+                "mac": "Command+Shift+C"
+            },
+            "description": "Copy selected text with URL and date"
+        }
+    }
+}
