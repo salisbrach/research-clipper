@@ -1,14 +1,19 @@
-chrome.commands.onCommand.addListener(function (command) {
+chrome.commands.onCommand.addListener((command) => {
     if (command === "copy-command") {
-        chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
-            chrome.scripting.executeScript({
-                target: {tabId: tabs[0].id},
-                function: copySelectedText
-            });
+        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+            copySelectedText(tabs[0].id);
         });
     }
 });
 
-function copySelectedText() {
-    chrome.tabs.sendMessage(tabs[0].id, {action: "copyText"});
+function copySelectedText(tabId) {
+    chrome.scripting.executeScript({
+        target: { tabId: tabId },
+        func: copyTextFunction,
+        args: []
+    });
+}
+
+function copyTextFunction() {
+    chrome.runtime.sendMessage({action: "copyText"});
 }
